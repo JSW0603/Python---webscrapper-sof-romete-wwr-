@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Job hunter</title>
+      <style>
+        body{
+          font-family: "Lobster", cursive;
+          background-color:black;
+          color: white;
+          margin: 0;
+          padding: 0%;
+          box-sizing: border-box;
+        }
+        
+        header {
+          display: flex;
+          justify-content: space-between;
+          font-size: 30px;
+          width: 98%;
+        }
+
+        a {
+          color: #C5E082;
+        }
+
+        .title {
+          color: #39E358;
+          font-weight: bold;
+          margin-bottom: 30px;
+          text-shadow: 2px 1px 0px #bdbdbd;
+        }
+
+        .results {
+          margin: 5px 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-size: 18px;
+        }
+
+        .box{
+          padding: 15px 10px;
+          border: 1px solid #5AE946;
+          border-radius: 15px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 50px;
+          width:95%;
+          margin-bottom:7px;
+          color: #5AE946;
+        }
+
+        section{
+          width: 100%;
+          display: grid;
+          grid-template-columns: 50% 20% 25% 5%;
+        }
+
+        section a{
+          color: #CCF541;
+        }
+      </style>
+  </head>
+
+  <body>
+    <header>
+        <a href="/"><i class="fas fa-chevron-circle-left"></i>Back</a>
+        <span class="title">Search Results Found {{resultsNumber}} results for: {{searching_by}}</span>
+        <a href="/save?word={{searching_by}}">Save to CSV<i class="fas fa-file-download"></i></a>
+    </header>
+    
+    <main class="results">
+      {% for job in jobs %}
+      <div class="box">
+        <section>
+          <span>{{job.title}}</span>
+          <span>{{job.company}}</span>
+          <span>{{job.location}}</span>
+          <a href="{{job.link}}" target="_blank"><i class="fas fa-link"></i> Link</a>
+        </section>
+      </div>
+      {% endfor %}
+    </main>
+    <script src="https://kit.fontawesome.com/5fa6b2922d.js" crossorigin="anonymous"></script> 
+  </body>
+</html>
